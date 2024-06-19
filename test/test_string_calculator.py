@@ -9,11 +9,16 @@ from string_calculator import calculate_sum
 # 5. Ignores numbers greater than 100
 
 test_cases_for_sum_calculation = [
+    ("5", 5),
     ("0,0", 0),
     ("0,1", 1),
     ("1,2", 3),
     ("10,4", 14),
-    ("5,99", 104)
+    ("5,99", 104),
+    ("1,2,3", 6),
+    ("4,10,3", 17),
+    ("1,2,3,4", 10),
+    ("4,20,33,226", 283)
 ]
 
 test_cases_for_empty_or_null_input = [
