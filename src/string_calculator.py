@@ -8,5 +8,6 @@ def calculate_sum(input_string):
         return 0
     else:
         numbers = list(map(int, re.split(supported_delimiters, input_string)))
-        total_sum = sum(numbers)
+        filtered_numbers = [number for number in numbers if number <= 100]
+        total_sum = sum(filtered_numbers)
         return total_sum

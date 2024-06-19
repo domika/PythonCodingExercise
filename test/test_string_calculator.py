@@ -17,8 +17,7 @@ test_cases_for_sum_calculation = [
     ("5,99", 104),
     ("1,2,3", 6),
     ("4,10,3", 17),
-    ("1,2,3,4", 10),
-    ("4,20,33,226", 283)
+    ("1,2,3,4", 10)
 ]
 
 test_cases_for_empty_or_null_input = [
@@ -41,6 +40,12 @@ test_cases_for_mixed_delimiters = [
     ("1 4:10;3", 18)
 ]
 
+test_cases_for_ignore_numbers_over_100 = [
+    ("99,100", 199),
+    ("9,101", 9),
+    ("4,20,33,226", 57)
+]
+
 
 @pytest.mark.parametrize("input_string, expected", test_cases_for_sum_calculation)
 def test_sum_calculation(input_string, expected):
@@ -59,4 +64,9 @@ def test_various_delimiters(input_string, expected):
 
 @pytest.mark.parametrize("input_string, expected", test_cases_for_mixed_delimiters)
 def test_mixed_delimiters(input_string, expected):
+    assert calculate_sum(input_string) == expected
+
+
+@pytest.mark.parametrize("input_string, expected", test_cases_for_ignore_numbers_over_100)
+def test_ignore_numbers_over_100(input_string, expected):
     assert calculate_sum(input_string) == expected
