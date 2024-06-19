@@ -16,7 +16,17 @@ test_cases_for_sum_calculation = [
     ("5,99", 104)
 ]
 
+test_cases_for_empty_or_null_input = [
+    ("", 0),
+    (None, 0)
+]
+
 
 @pytest.mark.parametrize("input_string, expected", test_cases_for_sum_calculation)
 def test_sum_calculation(input_string, expected):
+    assert calculate_sum(input_string) == expected
+
+
+@pytest.mark.parametrize("input_string, expected", test_cases_for_empty_or_null_input)
+def test_empty_or_null_input(input_string, expected):
     assert calculate_sum(input_string) == expected
