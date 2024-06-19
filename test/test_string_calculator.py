@@ -26,6 +26,15 @@ test_cases_for_empty_or_null_input = [
     (None, 0)
 ]
 
+test_cases_for_various_delimiters = [
+    ("1,2", 3),
+    ("10 4", 14),
+    ("5;99", 104),
+    ("1-2-3", 6),
+    ("3_6_1", 10),
+    ("4:10:3", 17)
+]
+
 
 @pytest.mark.parametrize("input_string, expected", test_cases_for_sum_calculation)
 def test_sum_calculation(input_string, expected):
@@ -34,4 +43,9 @@ def test_sum_calculation(input_string, expected):
 
 @pytest.mark.parametrize("input_string, expected", test_cases_for_empty_or_null_input)
 def test_empty_or_null_input(input_string, expected):
+    assert calculate_sum(input_string) == expected
+
+
+@pytest.mark.parametrize("input_string, expected", test_cases_for_various_delimiters)
+def test_various_delimiters(input_string, expected):
     assert calculate_sum(input_string) == expected
