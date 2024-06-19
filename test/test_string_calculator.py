@@ -29,14 +29,13 @@ test_cases_for_various_delimiters = [
     ("1,2", 3),
     ("10 4", 14),
     ("5;99", 104),
-    ("1-2-3", 6),
     ("3_6_1", 10),
     ("4:10:3", 17)
 ]
 
 test_cases_for_mixed_delimiters = [
-    ("1,2-3", 6),
-    ("3_6-1", 10),
+    ("1,2;3", 6),
+    ("3_6 1", 10),
     ("1 4:10;3", 18)
 ]
 
@@ -70,3 +69,9 @@ def test_mixed_delimiters(input_string, expected):
 @pytest.mark.parametrize("input_string, expected", test_cases_for_ignore_numbers_over_100)
 def test_ignore_numbers_over_100(input_string, expected):
     assert calculate_sum(input_string) == expected
+
+
+def test_calculates_sum_should_throw_exception_when_negative_number_is_provided():
+    with pytest.raises(ValueError) as exception:
+        calculate_sum("1,2,-3")
+    assert str(exception.value) == "Negative numbers are not supported!"
