@@ -9,3 +9,11 @@ Using Python with a Test Driven approach, create a simple String Calculator whic
 3. Supports different delimiters, e.g "1,2,3", "1 2 3"
 4. Does not support negative numbers
 5. Ignores numbers greater than 100
+
+---
+
+### Usage:
+`python coding_task`
+
+### Run unit tests:
+`python -m pytest`

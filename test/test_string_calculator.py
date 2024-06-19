@@ -1,6 +1,6 @@
 import pytest
 
-from string_calculator import calculate_sum
+from coding_task.string_calculator import calculate_sum
 
 test_cases_for_sum_calculation = [
     ("5", 5),
