@@ -2,12 +2,6 @@ import pytest
 
 from string_calculator import calculate_sum
 
-# 1. Adds numbers present in the input, e.g "1,2" = 3, "10,4" = 14
-# 2. Treats empty or null input as zero, e.g "" = 0, null = 0
-# 3. Supports different delimiters, e.g "1,2,3", "1 2 3"
-# 4. Does not support negative numbers
-# 5. Ignores numbers greater than 100
-
 test_cases_for_sum_calculation = [
     ("5", 5),
     ("0,0", 0),
@@ -48,30 +42,63 @@ test_cases_for_ignore_numbers_over_100 = [
 
 @pytest.mark.parametrize("input_string, expected", test_cases_for_sum_calculation)
 def test_sum_calculation(input_string, expected):
+    """
+    Test 'calculate_sum()' to add numbers provided in the input string
+
+    :param input_string: comma separated numbers
+    :param expected: total sum of numbers
+    """
     assert calculate_sum(input_string) == expected
 
 
 @pytest.mark.parametrize("input_string, expected", test_cases_for_empty_or_null_input)
 def test_empty_or_null_input(input_string, expected):
+    """
+    Test 'calculate_sum()' to treat empty or NULL input as zero
+
+    :param input_string: input
+    :param expected: total sum of numbers
+    """
     assert calculate_sum(input_string) == expected
 
 
 @pytest.mark.parametrize("input_string, expected", test_cases_for_various_delimiters)
 def test_various_delimiters(input_string, expected):
+    """
+    Test 'calculate_sum()' to support various delimiters
+
+    :param input_string: delimited numbers
+    :param expected: total sum of numbers
+    """
     assert calculate_sum(input_string) == expected
 
 
 @pytest.mark.parametrize("input_string, expected", test_cases_for_mixed_delimiters)
 def test_mixed_delimiters(input_string, expected):
+    """
+    Test 'calculate_sum()' to support mixed delimiters
+
+    :param input_string: delimited numbers
+    :param expected: total sum of numbers
+    """
     assert calculate_sum(input_string) == expected
 
 
 @pytest.mark.parametrize("input_string, expected", test_cases_for_ignore_numbers_over_100)
 def test_ignore_numbers_over_100(input_string, expected):
+    """
+    Test 'calculate_sum()' to ignore numbers greater than a hundred
+
+    :param input_string: comma separated numbers
+    :param expected: total sum of numbers
+    """
     assert calculate_sum(input_string) == expected
 
 
 def test_calculates_sum_should_throw_exception_when_negative_number_is_provided():
+    """
+    Test 'calculate_sum()' to throw 'ValueError' exception when negative numbers provided
+    """
     with pytest.raises(ValueError) as exception:
         calculate_sum("1,2,-3")
     assert str(exception.value) == "Negative numbers are not supported!"
