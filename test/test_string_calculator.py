@@ -1,6 +1,7 @@
 import pytest
 
 from coding_task.string_calculator import calculate_sum
+from coding_task.string_calculator import InvalidInputException
 from coding_task.string_calculator import NegativeNumbersNotSupportedException
 
 
@@ -95,6 +96,14 @@ def test_ignore_numbers_over_100(input_string, expected):
     :param expected: total sum of numbers
     """
     assert calculate_sum(input_string) == expected
+
+
+def test_calculates_sum_should_throw_exception_when_invalid_input_is_provided():
+    """
+    Test 'calculate_sum()' to throw 'InvalidInputException' exception when invalid input is provided
+    """
+    with pytest.raises(InvalidInputException):
+        calculate_sum("abc1,2")
 
 
 def test_calculates_sum_should_throw_exception_when_negative_number_is_provided():

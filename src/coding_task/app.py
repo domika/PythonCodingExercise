@@ -10,6 +10,8 @@ def run_app():
     user_input = input("Please enter the numbers to be added: ")
     try:
         print("Total sum: ", calculate_sum(user_input))
+    except InvalidInputException:
+        print("Error: Only numbers and delimiters can be entered!")
     except NegativeNumbersNotSupportedException:
         print("Error: Negative numbers are not supported!")
     except Exception as ex:
