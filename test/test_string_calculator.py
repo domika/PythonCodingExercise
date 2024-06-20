@@ -1,6 +1,7 @@
 import pytest
 
 from coding_task.string_calculator import calculate_sum
+from coding_task.string_calculator import NegativeNumbersNotSupportedException
 
 test_cases_for_sum_calculation = [
     ("5", 5),
@@ -97,8 +98,7 @@ def test_ignore_numbers_over_100(input_string, expected):
 
 def test_calculates_sum_should_throw_exception_when_negative_number_is_provided():
     """
-    Test 'calculate_sum()' to throw 'ValueError' exception when negative numbers provided
+    Test 'calculate_sum()' to throw 'NegativeNumbersNotSupportedException' exception when negative numbers are provided
     """
-    with pytest.raises(ValueError) as exception:
+    with pytest.raises(NegativeNumbersNotSupportedException):
         calculate_sum("1,2,-3")
-    assert str(exception.value) == "Negative numbers are not supported!"

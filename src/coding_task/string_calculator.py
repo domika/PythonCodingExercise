@@ -2,12 +2,16 @@ import re
 
 SUPPORTED_DELIMITERS = r'[\s,;:\_]'
 MAX_NUMBER = 100
-MESSAGE_NEGATIVE_NUMBERS_NOT_SUPPORTED = "Negative numbers are not supported!"
+
+
+class NegativeNumbersNotSupportedException(Exception):
+    def __init__(self):
+        pass
 
 
 def __validate(number):
     if number < 0:
-        raise ValueError(MESSAGE_NEGATIVE_NUMBERS_NOT_SUPPORTED)
+        raise NegativeNumbersNotSupportedException
     return number
 
 
