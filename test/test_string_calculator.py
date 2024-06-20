@@ -3,6 +3,7 @@ import pytest
 from coding_task.string_calculator import calculate_sum
 from coding_task.string_calculator import NegativeNumbersNotSupportedException
 
+
 test_cases_for_sum_calculation = [
     ("5", 5),
     ("0,0", 0),
